@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext.jsx";
 // import { login } from "../Components/AuthContext.jsx";
 
 
