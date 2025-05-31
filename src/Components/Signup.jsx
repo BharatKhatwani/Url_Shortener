@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "./AuthContext";
+import { useAuth } from "./AuthContext.jsx";
 // import { signup } from "../Components/AuthContext.jsx";
- 
+ const signupUrl = import.meta.env.VITE_SIGNUP;
 
 const Signup = () => {
   const  { signup  } = useAuth();
@@ -29,7 +29,7 @@ const Signup = () => {
     setSuccessMsg("");
 
     try {
-      const response = await fetch("https://url-r6ee.onrender.com/auth/signup", {
+      const response = await fetch(signupUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+const HomeUrl = import.meta.env.VITE_HOME;
 
 const Shorter = () => {
   const [url, setUrl] = useState("");
@@ -20,7 +21,7 @@ const Shorter = () => {
     setError("");
 
     try {
-      const res = await fetch("https://url-r6ee.onrender.com/short", {
+      const res = await fetch(HomeUrl, {
         method: "POST",
         credentials: "include",
         headers: {

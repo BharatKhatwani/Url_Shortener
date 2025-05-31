@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from "./AuthContext.jsx";
 // import { login } from "../Components/AuthContext.jsx";
+const LoginUrl = import.meta.env.VITE_LOGIN;
 
 
 
@@ -25,7 +26,7 @@ const Login = () => {
     setSuccessMsg('');
 
     try {
-      const res = await fetch('https://url-r6ee.onrender.com/auth/login', {
+      const res = await fetch(LoginUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),

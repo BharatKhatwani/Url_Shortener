@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from './Navbar'
-import Shorter from './Shorter'
+import Navbar from './Navbar.jsx'
+import Shorter from './Shorter.jsx'
 const Home = () => {
   return (
     <div>
