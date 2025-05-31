@@ -42,7 +42,7 @@ const Signup = () => {
           // localStorage.setItem('token', data.token);
           // signup(data.token);signup(data.accessToken);
 signup(data.accessToken);
-console.log(data.accessToken)
+// console.log(data.accessToken)
 
           // console.log( signup(data.))
         setSuccessMsg("Account created successfully!");

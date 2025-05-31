@@ -38,7 +38,7 @@ const Login = () => {
         // localStorage.setItem('token', data.token); // optional
         // login(data.acces);
         login(data.accessToken);
-        console.log(login(data.accessToken))
+        // console.log(login(data.accessToken))
 
         setSuccessMsg('Login successful! Redirecting...');
         setTimeout(() => navigate('/home'), 1500);
@@ -46,7 +46,7 @@ const Login = () => {
         setErrorMsg(data.message || 'Login failed. Please try again.');
       }
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       setErrorMsg('Something went wrong. Please try again later.');
     } finally {
       setLoading(false);
