@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+
 const HomeUrl = import.meta.env.VITE_HOME;
 
 const Shorter = () => {
@@ -21,11 +22,18 @@ const Shorter = () => {
     setError("");
 
     try {
+      const token = localStorage.getItem("token");
+      if (!token) {
+        setError("User is not logged in. Please log in first.");
+        setLoading(false);
+        return;
+      }
+
       const res = await fetch(HomeUrl, {
         method: "POST",
-        credentials: "include",
         headers: {
           "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
         body: JSON.stringify({ longUrl: url }),
       });
