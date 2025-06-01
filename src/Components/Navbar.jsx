@@ -2,7 +2,7 @@ import React from 'react';
 import { IoIosLogOut } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import { useAuth } from './AuthContext';
+import { useAuth } from './AuthContext.jsx';
 
 const Navbar = () => {
   const navigate = useNavigate();

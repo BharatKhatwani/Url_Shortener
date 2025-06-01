@@ -3,6 +3,8 @@ import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from "./AuthContext.jsx";
 
+  // console.log({useAuth})/
+
 const LoginUrl = import.meta.env.VITE_LOGIN;
 
 const Login = () => {
