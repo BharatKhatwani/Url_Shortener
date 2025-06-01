@@ -33,24 +33,7 @@ A modern, full-stack URL shortener built using the MERN stack with Tailwind CSS 
 
 ---
 
-## 🗂 Project Structure
 
-## url-shortener/
-├── backend/
-│ ├── models/
-│ ├── routes/
-│ ├── controllers/
-│ └── server.js
-├── frontend/
-│ ├── src/
-│ │ ├── components/
-│ │ ├── pages/
-│ │ ├── context/
-│ │ └── App.jsx
-│ └── tailwind.config.js
-├── .env
-├── package.json
-├── README.md
 
 
 ---
@@ -91,40 +74,44 @@ Create a .env file inside /backend with the following variables:
 
 
 
-## PORT=3000
-##  MONGODB_URI=your_mongodb_connection_string
-## JWT_SECRET=your_secret_key
-## Start the backend server:
+PORT=3000
+ MONGODB_URI=your_mongodb_connection_string
+ JWT_SECRET=your_secret_key
+ Start the backend server:
 
 
-## npm start
-## 🎨 Frontend Setup
-## Navigate to the frontend folder:
+ npm start
+🎨 Frontend Setup
+ Navigate to the frontend folder:
 
 
-## cd frontend
-## Install dependencies:
+ cd frontend
 
 
-## npm install
-## Start the frontend development server:
 
-## npm run dev
-## 🔐 Authentication Flow
-## User signs up → Token is generated and stored in localStorage
+ 
+ Install dependencies:
 
-## Auth context manages login state globally
 
-## Authenticated users can access the dashboard and shorten URLs
+ npm install
+ Start the frontend development server:
 
-## Token is automatically sent with each API request for authentication
+ npm run dev
+ 🔐 Authentication Flow
+User signs up → Token is generated and stored in localStorage
 
-## 📦 API Endpoints (Backend)
-## Method	Endpoint	Description
-## POST	/auth/signup	Register new user
-## POST	/auth/login	Authenticate user
-## POST	/url/shorten	Create a short URL
-## GET	/url/:shortId	Redirect to long URL
+Auth context manages login state globally
+
+ Authenticated users can access the dashboard and shorten URLs
+
+ Token is automatically sent with each API request for authentication
+
+ 📦 API Endpoints (Backend)
+ Method	Endpoint	Description
+ POST	/auth/signup	Register new user
+ POST	/auth/login	Authenticate user
+ POST	/url/shorten	Create a short URL
+ GET	/url/:shortId	Redirect to long URL
 
 
 
