@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext.jsx";
+import { useEffect } from "react";
 // import { signup } from "../Components/AuthContext.jsx";
  const signupUrl = import.meta.env.VITE_SIGNUP;
 
@@ -23,43 +24,43 @@ const Signup = () => {
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  setLoading(true);
+  setErrorMsg("");
+  setSuccessMsg("");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setErrorMsg("");
-    setSuccessMsg("");
+  try {
+    const response = await fetch(signupUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    });
 
-    try {
-      const response = await fetch(signupUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    const data = await response.json();
 
-      const data = await response.json();
-//       console.log("Full signup response data:", data);
-// console.log("data.token:", data.token);
-      if (response.ok) {
-          // localStorage.setItem('token', data.token);
-          // signup(data.token);signup(data.accessToken);
-signup(data.accessToken);
-// console.log(data.accessToken)
+    if (response.ok) {
+      // Store token locally
+      localStorage.setItem('token', data.accessToken);
 
-          // console.log( signup(data.))
-        setSuccessMsg("Account created successfully!");
+      // Update context token state
+      signup(data.accessToken);
 
-        setTimeout(() => navigate("/home"), 1500);
-      } else {
-        setErrorMsg(data.message || "Signup failed. Please try again.");
-      }
-    } catch (err) {
-      console.error(err);
-      setErrorMsg("Something went wrong. Please try again later.");
-    } finally {
-      setLoading(false);
+      setSuccessMsg("Account created successfully!");
+
+      // Redirect immediately to home
+      navigate("/home", { replace: true });
+    } else {
+      setErrorMsg(data.message || "Signup failed. Please try again.");
     }
-  };
+  } catch (err) {
+    console.error(err);
+    setErrorMsg("Something went wrong. Please try again later.");
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-4">

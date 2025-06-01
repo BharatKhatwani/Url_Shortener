@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAuth } from "./AuthContext.jsx";
-// import { login } from "../Components/AuthContext.jsx";
+
 const LoginUrl = import.meta.env.VITE_LOGIN;
 
-
-
 const Login = () => {
-  const { login } = useAuth();
+  const { login, token } = useAuth();  // get token to check login state
   const [form, setForm] = useState({ email: '', password: '' });
   const [errorMsg, setErrorMsg] = useState('');
   const [successMsg, setSuccessMsg] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  // Redirect if already logged in
+  useEffect(() => {
+    if (token) {
+      navigate('/home', { replace: true });
+    }
+  }, [token, navigate]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -35,18 +40,14 @@ const Login = () => {
       const data = await res.json();
 
       if (res.ok) {
-        // localStorage.setItem('token', data.token); // optional
-        // login(data.acces);
-        login(data.accessToken);
-        // console.log(login(data.accessToken))
+        login(data.accessToken);  // update auth context with token
 
         setSuccessMsg('Login successful! Redirecting...');
-        setTimeout(() => navigate('/home'), 1500);
+        setTimeout(() => navigate('/home', { replace: true }), 1500);
       } else {
         setErrorMsg(data.message || 'Login failed. Please try again.');
       }
     } catch (err) {
-      // console.error(err);
       setErrorMsg('Something went wrong. Please try again later.');
     } finally {
       setLoading(false);
@@ -54,25 +55,20 @@ const Login = () => {
   };
 
   return (
-    <motion.div className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-4"
-   
+    <motion.div
+      className="flex justify-center items-center min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 px-4"
     >
-
       <div className="bg-gray-900 border border-gray-700 shadow-2xl rounded-2xl p-8 w-full max-w-md text-white">
         <h1 className="text-3xl font-semibold text-center mb-6">
           Welcome Back 👋
         </h1>
 
         {errorMsg && (
-          <div className="mb-4 text-red-400 text-center font-medium">
-            {errorMsg}
-          </div>
+          <div className="mb-4 text-red-400 text-center font-medium">{errorMsg}</div>
         )}
 
         {successMsg && (
-          <div className="mb-4 text-green-400 text-center font-medium">
-            {successMsg}
-          </div>
+          <div className="mb-4 text-green-400 text-center font-medium">{successMsg}</div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
