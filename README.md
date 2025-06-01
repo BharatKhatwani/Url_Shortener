@@ -89,7 +89,7 @@ PORT=3000
 
 
 
- 
+
  Install dependencies:
 
 
@@ -106,12 +106,17 @@ Auth context manages login state globally
 
  Token is automatically sent with each API request for authentication
 
- 📦 API Endpoints (Backend)
- Method	Endpoint	Description
- POST	/auth/signup	Register new user
- POST	/auth/login	Authenticate user
- POST	/url/shorten	Create a short URL
- GET	/url/:shortId	Redirect to long URL
+
+ 
+### API Endpoints (Backend)
+
+| Method | Endpoint         | Description           |
+|--------|------------------|-----------------------|
+| POST   | `/auth/signup`   | Register new user      |
+| POST   | `/auth/login`    | Authenticate user     |
+| POST   | `/url/shorten`   | Create a short URL    |
+| GET    | `/url/:shortId`  | Redirect to long URL  |
+
 
 
 
