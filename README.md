@@ -35,7 +35,7 @@ A modern, full-stack URL shortener built using the MERN stack with Tailwind CSS 
 
 ## 🗂 Project Structure
 
-url-shortener/
+## url-shortener/
 ├── backend/
 │ ├── models/
 │ ├── routes/
@@ -52,9 +52,6 @@ url-shortener/
 ├── package.json
 ├── README.md
 
-yaml
-Copy
-Edit
 
 ---
 
@@ -71,13 +68,16 @@ Edit
 
 ---
 
+---
+
 ## ⚙️ Setup Instructions
 
 ### 📌 Prerequisites
-- Node.js and npm installed  
-- MongoDB (Atlas or local instance)  
+- Node.js and npm installed
+- MongoDB (Atlas or local instance)
 
 ---
+
 
 ### 🔧 Backend Setup
 
@@ -91,40 +91,40 @@ Create a .env file inside /backend with the following variables:
 
 
 
-PORT=3000
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_secret_key
-Start the backend server:
+## PORT=3000
+##  MONGODB_URI=your_mongodb_connection_string
+## JWT_SECRET=your_secret_key
+## Start the backend server:
 
 
-npm start
-🎨 Frontend Setup
-Navigate to the frontend folder:
+## npm start
+## 🎨 Frontend Setup
+## Navigate to the frontend folder:
 
 
-cd frontend
-Install dependencies:
+## cd frontend
+## Install dependencies:
 
 
-npm install
-Start the frontend development server:
+## npm install
+## Start the frontend development server:
 
-npm run dev
-🔐 Authentication Flow
-User signs up → Token is generated and stored in localStorage
+## npm run dev
+## 🔐 Authentication Flow
+## User signs up → Token is generated and stored in localStorage
 
-Auth context manages login state globally
+## Auth context manages login state globally
 
-Authenticated users can access the dashboard and shorten URLs
+## Authenticated users can access the dashboard and shorten URLs
 
-Token is automatically sent with each API request for authentication
+## Token is automatically sent with each API request for authentication
 
-📦 API Endpoints (Backend)
-Method	Endpoint	Description
-POST	/auth/signup	Register new user
-POST	/auth/login	Authenticate user
-POST	/url/shorten	Create a short URL
-GET	/url/:shortId	Redirect to long URL
+## 📦 API Endpoints (Backend)
+## Method	Endpoint	Description
+## POST	/auth/signup	Register new user
+## POST	/auth/login	Authenticate user
+## POST	/url/shorten	Create a short URL
+## GET	/url/:shortId	Redirect to long URL
 
 
 
