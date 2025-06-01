@@ -4,6 +4,8 @@ import { useAuth } from "./AuthContext.jsx";
 // import { signup } from "../Components/AuthContext.jsx";
  const signupUrl = import.meta.env.VITE_SIGNUP;
 
+//  console.log("Signup URL:", signupUrl);
+
 const Signup = () => {
   const  { signup  } = useAuth();
   
