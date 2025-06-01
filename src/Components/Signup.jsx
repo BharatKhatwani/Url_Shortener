@@ -5,7 +5,7 @@ import { useEffect } from "react";
 // import { signup } from "../Components/AuthContext.jsx";
  const signupUrl = import.meta.env.VITE_SIGNUP;
 
-//  console.log("Signup URL:", signupUrl);
+ console.log("Signup URL:", signupUrl);
 
 const Signup = () => {
   const  { signup  } = useAuth();
